@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+        "module": "es2015",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "outDir": "dist"
+    },
+    "include": ["**/*"],
+    "exclude": ["node_modules"]
+}
