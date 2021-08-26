@@ -11,5 +11,5 @@ const category = new Category(redux);
 
 profile.updateProfile({
     firstName: "Stephen",
-    role: 'admin'
+    role: 'admins'
 });
