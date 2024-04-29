@@ -4,7 +4,9 @@
         "removeComments": true,
         "preserveConstEnums": true,
         "sourceMap": true,
-        "outDir": "dist"
+        "outDir": "dist",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true
     },
     "include": ["**/*"],
     "exclude": ["node_modules"]
