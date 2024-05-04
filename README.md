@@ -192,3 +192,44 @@ const manager2 = ElsaStateManager.getInstance<string>();
 manager2.updateState("age", "26");
 console.log(manager1.getState());
 ```
+
+
+
+#### Command Pattern
+The Command is a creational design pattern that ensures only one instance of a class exists in a program, and that single instance must be created and made accessible by the class itself. While this may make sense for certain scenarios, this patterns puts the class in a spot where different other client components using the it within our program can make changes that may be untraceable as all the client components reference the same instance.
+
+Hence, as a note, one must be mindful of state changes when using this pattern. Below, is an example:
+
+```typescript
+class ElsaStateManager<T = any> {
+  private static instance: ElsaStateManager;
+  public state = new Map<string, T>();
+
+  private constructor() {}
+
+  static getInstance<T>(): ElsaStateManager<T> {
+    if (!ElsaStateManager.instance) {
+      ElsaStateManager.instance = new ElsaStateManager<T>();
+    }
+
+    return ElsaStateManager.instance;
+  }
+
+  getState(): Map<string, any> {
+    return this.state;
+  }
+
+  updateState(key: string, value: T): void {
+    this.state.set(key, value);
+  }
+}
+
+// Tests:
+const manager1 = ElsaStateManager.getInstance<string>();
+manager1.updateState("name", "seyi");
+console.log(manager1.getState());
+
+const manager2 = ElsaStateManager.getInstance<string>();
+manager2.updateState("age", "26");
+console.log(manager1.getState());
+```
