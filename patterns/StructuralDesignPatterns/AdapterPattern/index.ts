@@ -1,3 +1,5 @@
+import { Pluggable } from "./interface";
+
 /**
  * @module Adapter Pattern
  * @description
@@ -6,3 +8,30 @@
  * implementation adhering to a set of common interfaces which will be exposed to consumers of the
  * functionality.
  */
+class Client {
+  constructor(private readonly pluggable: Pluggable) {}
+
+  do() {
+    this.pluggable.do();
+  }
+}
+
+class Target {
+  doInParticular() {
+    console.log("Doing something specific in a particular way");
+  }
+}
+
+class PluggableAdapter implements Pluggable {
+  constructor(private readonly target: Target) {}
+
+  do() {
+    this.target.doInParticular();
+  }
+}
+
+const target = new Target();
+const adapter = new PluggableAdapter(target);
+const client = new Client(adapter);
+
+client.do();
